@@ -1,4 +1,7 @@
 # PE6lyon-algo-obj2
+# 1. Écrire la classe Apprenant qui a comme attribut un nom et un liste de notes, et comme méthode 
+# une méthode calculerMoyenne() qui retourne sa moyenne, et une méthode afficher() qui affiche 
+# son nom et sa moyenne. ##
 
 Objets partie 2 énoncé 1 : 
 Type Apprenant
