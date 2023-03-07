@@ -35,8 +35,8 @@ FinType
 # sur la carte.
 
 TYPE Carte 
-  Déclarer mat []
-  Déclarer trésor [] 
+  Déclarer cases[][]
+  Déclarer trésor[] 
 FINTYPE
 TYPE Aventurier
   Déclarer Carte carte
