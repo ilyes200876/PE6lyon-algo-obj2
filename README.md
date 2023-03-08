@@ -51,5 +51,93 @@ TYPE Aventurier
   FIN
 FINTYPE
 
-
+# Modifier la classe Aventurier pour vérifier qu’on essaie de déplacer l’aventurier sur une case 
+# adjacente (haut, gauche, bas, droite), sinon afficher une erreur. 
  
+# Modifier la classe Aventurier pour lui permettre de se déplacer en diagonale
+
+
+
+Type Carte
+    Déclarer cases[][]
+    Déclarer trésor[]
+
+    FONCTION coordonnéesValides(var x, var y)
+    DÉBUT
+        SI x >= 0 ET x < taille(this.cases)
+            ET y < taille(this.cases[x]) ET y >= 0 ALORS
+            Renvoyer VRAI
+        FINSI
+        Renvoyer FAUX
+    FIN
+
+FinType
+
+
+Type Aventurier
+    Déclarer nom
+    Déclarer coordonnées[]
+    Déclarer Carte carte
+
+    FONCTION estCaseGauche( var dest_x, var dest_y)
+    DÉBUT
+        Déclarer x <- this.coordonnées[0]
+        Déclarer y <- this.coordonnées[1]
+        SI dest_y = y ET dest_x = x - 1 ALORS
+            Renvoyer VRAI
+        FINSI
+        Renvoyer FAUX
+    FIN
+
+    FONCTION estCaseDroite( var dest_x, var dest_y)
+    DÉBUT
+        Déclarer x <- this.coordonnées[0]
+        Déclarer y <- this.coordonnées[1]
+        SI dest_y = y ET dest_x = x + 1 ALORS
+            Renvoyer VRAI
+        FINSI
+        Renvoyer FAUX
+    FIN
+
+    FONCTION estCaseHaut( var dest_x, var dest_y)
+    DÉBUT
+        Déclarer x <- this.coordonnées[0]
+        Déclarer y <- this.coordonnées[1]
+        SI dest_x = x ET dest_y = y + 1 ALORS
+            Renvoyer VRAI
+        FINSI
+        Renvoyer FAUX
+    FIN
+
+    FONCTION estCaseBas( var dest_x, var dest_y)
+    DÉBUT
+        Déclarer x <- this.coordonnées[0]
+        Déclarer y <- this.coordonnées[1]
+        SI dest_x = x ET dest_y = y - 1 ALORS
+            Renvoyer VRAI
+        FINSI
+        Renvoyer FAUX
+    FIN
+
+    FONCTION estCaseHautGauche( var dest_x, var dest_y)
+    DÉBUT
+        Déclarer x <- this.coordonnées[0]
+        Déclarer y <- this.coordonnées[1]
+        SI dest_y = y + 1 ET dest_x = x - 1 ET ALORS
+            Renvoyer VRAI
+        FINSI
+        Renvoyer FAUX
+    FIN
+
+    FONCTION estCaseAdjacente(var dest_x, var dest_y)
+    DÉBUT
+
+        SI estCaseGauche(dest_x, dest_y) 
+            OU estCaseHaut(dest_x, dest_y)
+            OU estCaseDroite(dest_x, dest_y)
+            OU estCaseBas(dest_x, dest_y)
+            ALORS
+            Renvoyer VRAI
+        FINSI
+        Renvoyer FAUX
+    FIN
